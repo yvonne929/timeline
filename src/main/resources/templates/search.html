@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>查詢</title>
+    <head th:insert="~{load/css :: css}"></head>
+    <link rel="stylesheet" th:href="@{/css/search.css}">
+</head>
+<body>
+    <section th:replace="~{load/header :: header}"></section>
+    <section class="main-content">
+        <div class="content">
+    <main>
+        <h1>查詢</h1>
+        <form id=searchForm method="POST" th:action="@{/search}" th:Object="${idNumber}" enctype="multipart/form-data" autocomplete="off">
+        	<input type="hidden" id="MESSAGE" th:value="${MESSAGE}"/>
+            <section class="form-input">
+                <label>患者身份證字號</label>
+                <div class="input-area">
+                    <input type="text" th:field="*{idNumber}" placeholder="請輸入患者身分證字號"/>
+                </div>
+            </section>
+            
+            <button>查詢</button>
+        </form>
+    </main>   
+    </div>
+    </section>
+    <section th:replace="~{load/footer :: footer}"></section>
+    <script th:replace="~{load/js :: js}"></script>
+    <script th:src="@{/js/search.js}"></script>
+</body>
+</html>

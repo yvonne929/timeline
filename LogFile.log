@@ -1,0 +1,325 @@
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 9832 (C:\Users\yvonne\112project\test2\target\classes started by yvonne in C:\Users\yvonne\112project\test2)
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-16 === [restartedMain] === WARN  === o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext ==== Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2024-03-16 === [restartedMain] === INFO  === o.s.b.a.logging.ConditionEvaluationReportLogger ==== 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-03-16 === [restartedMain] === ERROR === org.springframework.boot.SpringApplication ==== Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:610)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.example.demo.SpringBootDemoApplication.main(SpringBootDemoApplication.java:12)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tomcatServletWebServerFactory' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/ServletWebServerFactoryConfiguration$EmbeddedTomcat.class]: BeanPostProcessor before instantiation of bean failed
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getWebServerFactory(ServletWebServerApplicationContext.java:218)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:181)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:161)
+	... 11 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration': warning no match for this type name: com.example.demo.controller.MemberAccountController [Xlint:invalidAbsoluteTypeName]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:605)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:412)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.aop.framework.autoproxy.BeanFactoryAdvisorRetrievalHelper.findAdvisorBeans(BeanFactoryAdvisorRetrievalHelper.java:91)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findCandidateAdvisors(AbstractAdvisorAutoProxyCreator.java:111)
+	at org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator.findCandidateAdvisors(AnnotationAwareAspectJAutoProxyCreator.java:92)
+	at org.springframework.aop.aspectj.autoproxy.AspectJAwareAdvisorAutoProxyCreator.shouldSkip(AspectJAwareAdvisorAutoProxyCreator.java:101)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessBeforeInstantiation(AbstractAutoProxyCreator.java:280)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInstantiation(AbstractAutowireCapableBeanFactory.java:1127)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeforeInstantiation(AbstractAutowireCapableBeanFactory.java:1102)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:509)
+	... 18 common frames omitted
+Caused by: java.lang.IllegalArgumentException: warning no match for this type name: com.example.demo.controller.MemberAccountController [Xlint:invalidAbsoluteTypeName]
+	at org.aspectj.weaver.tools.PointcutParser.parsePointcutExpression(PointcutParser.java:319)
+	at org.springframework.aop.aspectj.AspectJExpressionPointcut.buildPointcutExpression(AspectJExpressionPointcut.java:222)
+	at org.springframework.aop.aspectj.AspectJExpressionPointcut.obtainPointcutExpression(AspectJExpressionPointcut.java:193)
+	at org.springframework.aop.aspectj.AspectJExpressionPointcut.getClassFilter(AspectJExpressionPointcut.java:172)
+	at org.springframework.aop.support.AopUtils.canApply(AopUtils.java:226)
+	at org.springframework.aop.support.AopUtils.canApply(AopUtils.java:288)
+	at org.springframework.aop.support.AopUtils.findAdvisorsThatCanApply(AopUtils.java:320)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findAdvisorsThatCanApply(AbstractAdvisorAutoProxyCreator.java:128)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findEligibleAdvisors(AbstractAdvisorAutoProxyCreator.java:97)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.getAdvicesAndAdvisorsForBean(AbstractAdvisorAutoProxyCreator.java:78)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.wrapIfNecessary(AbstractAutoProxyCreator.java:366)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessAfterInitialization(AbstractAutoProxyCreator.java:318)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:434)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	... 40 common frames omitted
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 17100 (C:\Users\yvonne\112project\test2\target\classes started by yvonne in C:\Users\yvonne\112project\test2)
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat initialized with port(s): 8080 (http)
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardService ==== Starting service [Tomcat]
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardEngine ==== Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-03-16 === [restartedMain] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring embedded WebApplicationContext
+2024-03-16 === [restartedMain] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ==== Root WebApplicationContext: initialization completed in 1999 ms
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.autoconfigure.OptionalLiveReloadServer ==== LiveReload server is running on port 35729
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Started SpringBootDemoApplication in 3.439 seconds (process running for 3.96)
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Initializing Servlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Completed initialization in 2 ms
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 12
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Starting...
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.zaxxer.hikari.pool.HikariPool ==== HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7210cc0a
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Start completed.
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:search
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin Time spent: 665
+2024-03-16 === [http-nio-8080-exec-6] === WARN  === o.t.s.p.AbstractStandardFragmentInsertionTagProcessor ==== [THYMELEAF][http-nio-8080-exec-6][modifyPassword] Deprecated unwrapped fragment expression "load/css :: css" found in template modifyPassword, line 7, col 11. Please use the complete syntax of fragment expressions instead ("~{load/css :: css}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-03-16 === [http-nio-8080-exec-6] === WARN  === o.t.s.p.AbstractStandardFragmentInsertionTagProcessor ==== [THYMELEAF][http-nio-8080-exec-6][modifyPassword] Deprecated unwrapped fragment expression "load/header :: header" found in template modifyPassword, line 11, col 14. Please use the complete syntax of fragment expressions instead ("~{load/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-03-16 === [http-nio-8080-exec-6] === WARN  === o.t.s.p.AbstractStandardFragmentInsertionTagProcessor ==== [THYMELEAF][http-nio-8080-exec-6][modifyPassword] Deprecated unwrapped fragment expression "load/footer :: footer" found in template modifyPassword, line 48, col 14. Please use the complete syntax of fragment expressions instead ("~{load/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-03-16 === [http-nio-8080-exec-6] === WARN  === o.t.s.p.AbstractStandardFragmentInsertionTagProcessor ==== [THYMELEAF][http-nio-8080-exec-6][modifyPassword] Deprecated unwrapped fragment expression "load/js :: js" found in template modifyPassword, line 49, col 13. Please use the complete syntax of fragment expressions instead ("~{load/js :: js}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:login
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout Time spent: 0
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 0
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 2584 (C:\Users\yvonne\112project\test2\target\classes started by yvonne in C:\Users\yvonne\112project\test2)
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat initialized with port(s): 8080 (http)
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardService ==== Starting service [Tomcat]
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardEngine ==== Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-03-16 === [restartedMain] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring embedded WebApplicationContext
+2024-03-16 === [restartedMain] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ==== Root WebApplicationContext: initialization completed in 1971 ms
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.autoconfigure.OptionalLiveReloadServer ==== LiveReload server is running on port 35729
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Started SpringBootDemoApplication in 3.711 seconds (process running for 4.154)
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Initializing Servlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Completed initialization in 1 ms
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 12
+2024-03-16 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-7] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Starting...
+2024-03-16 === [http-nio-8080-exec-7] === INFO  === com.zaxxer.hikari.pool.HikariPool ==== HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7e018306
+2024-03-16 === [http-nio-8080-exec-7] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Start completed.
+2024-03-16 === [http-nio-8080-exec-7] === WARN  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-7] === WARN  === com.example.demo.aop.UserAspect ==== 帳號或密碼錯誤
+2024-03-16 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-7] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [com.example.demo.service.ex.PasswordNotMatchException: 帳號或密碼錯誤]
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 14
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 17828 (C:\Users\yvonne\112project\test2\target\classes started by yvonne in C:\Users\yvonne\112project\test2)
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat initialized with port(s): 8080 (http)
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardService ==== Starting service [Tomcat]
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardEngine ==== Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-03-16 === [restartedMain] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring embedded WebApplicationContext
+2024-03-16 === [restartedMain] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ==== Root WebApplicationContext: initialization completed in 1905 ms
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.autoconfigure.OptionalLiveReloadServer ==== LiveReload server is running on port 35729
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Started SpringBootDemoApplication in 3.657 seconds (process running for 4.259)
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Initializing Servlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Completed initialization in 3 ms
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Starting...
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.zaxxer.hikari.pool.HikariPool ==== HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f6b0438
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Start completed.
+2024-03-16 === [http-nio-8080-exec-1] === WARN  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-1] === WARN  === com.example.demo.aop.UserAspect ==== 帳號或密碼錯誤
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-1] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [com.example.demo.service.ex.PasswordNotMatchException: 帳號或密碼錯誤]
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 4
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:search
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin Time spent: 5
+2024-03-16 === [http-nio-8080-exec-1] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String com.example.demo.controller.IdNumberController.doSearch(com.example.demo.entity.Patient,jakarta.servlet.http.HttpSession): [Field error in object 'patient' on field 'idNumber': rejected value [A1234567]; codes [Pattern.patient.idNumber,Pattern.idNumber,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [patient.idNumber,idNumber]; arguments []; default message [idNumber],[Ljakarta.validation.constraints.Pattern$Flag;@63009b16,^[A-Z]\d{9}$]; default message [英文為大寫且數字為9碼]] ]
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:login
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-03-16 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout Time spent: 6
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 13
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 16196 (C:\Users\yvonne\112project\test2\target\classes started by yvonne in C:\Users\yvonne\112project\test2)
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat initialized with port(s): 8080 (http)
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardService ==== Starting service [Tomcat]
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardEngine ==== Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-03-16 === [restartedMain] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring embedded WebApplicationContext
+2024-03-16 === [restartedMain] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ==== Root WebApplicationContext: initialization completed in 2112 ms
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.autoconfigure.OptionalLiveReloadServer ==== LiveReload server is running on port 35729
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Started SpringBootDemoApplication in 3.916 seconds (process running for 4.332)
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Initializing Servlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Completed initialization in 2 ms
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 13
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Starting...
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.zaxxer.hikari.pool.HikariPool ==== HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@d04cbea
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Start completed.
+2024-03-16 === [http-nio-8080-exec-9] === WARN  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-9] === WARN  === com.example.demo.aop.UserAspect ==== 帳號或密碼錯誤
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-9] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [com.example.demo.service.ex.PasswordNotMatchException: 帳號或密碼錯誤]
+2024-03-16 === [http-nio-8080-exec-5] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-5] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-5] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-5] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-5] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 15
+2024-03-16 === [http-nio-8080-exec-8] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-8] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-8] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:search
+2024-03-16 === [http-nio-8080-exec-8] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-8] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin Time spent: 10
+2024-03-16 === [http-nio-8080-exec-4] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String com.example.demo.controller.IdNumberController.doSearch(com.example.demo.entity.Patient,jakarta.servlet.http.HttpSession): [Field error in object 'patient' on field 'idNumber': rejected value [A123]; codes [Pattern.patient.idNumber,Pattern.idNumber,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [patient.idNumber,idNumber]; arguments []; default message [idNumber],[Ljakarta.validation.constraints.Pattern$Flag;@5e28a845,^[A-Z]\d{9}$]; default message [英文為大寫且數字為9碼]] ]
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:login
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-03-16 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout Time spent: 8
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-9] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 6
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 21368 (C:\Users\yvonne\112project\test2\target\classes started by yvonne in C:\Users\yvonne\112project\test2)
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat initialized with port(s): 8080 (http)
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardService ==== Starting service [Tomcat]
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardEngine ==== Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-03-16 === [restartedMain] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring embedded WebApplicationContext
+2024-03-16 === [restartedMain] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ==== Root WebApplicationContext: initialization completed in 2181 ms
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.autoconfigure.OptionalLiveReloadServer ==== LiveReload server is running on port 35729
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Started SpringBootDemoApplication in 3.771 seconds (process running for 4.254)
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Initializing Servlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Completed initialization in 0 ms
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 9
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Starting...
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.zaxxer.hikari.pool.HikariPool ==== HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@faba2c6
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Start completed.
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:search
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin Time spent: 721
+2024-03-16 === [http-nio-8080-exec-8] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String com.example.demo.controller.IdNumberController.doSearch(com.example.demo.entity.Patient,jakarta.servlet.http.HttpSession): [Field error in object 'patient' on field 'idNumber': rejected value [A1234]; codes [Pattern.patient.idNumber,Pattern.idNumber,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [patient.idNumber,idNumber]; arguments []; default message [idNumber],[Ljakarta.validation.constraints.Pattern$Flag;@364c25d4,^[A-Z]\d{9}$]; default message [英文為大寫且數字為9碼]] ]
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 20276 (C:\Users\yvonne\112project\test4\target\classes started by yvonne in C:\Users\yvonne\112project\test4)
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat initialized with port(s): 8080 (http)
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardService ==== Starting service [Tomcat]
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardEngine ==== Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-03-16 === [restartedMain] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring embedded WebApplicationContext
+2024-03-16 === [restartedMain] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ==== Root WebApplicationContext: initialization completed in 2666 ms
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.autoconfigure.OptionalLiveReloadServer ==== LiveReload server is running on port 35729
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Started SpringBootDemoApplication in 4.647 seconds (process running for 5.551)
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Initializing Servlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Completed initialization in 1 ms
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 12
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Starting...
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.zaxxer.hikari.pool.HikariPool ==== HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3be85c63
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Start completed.
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:search
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-03-16 === [http-nio-8080-exec-3] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin Time spent: 902
+2024-03-16 === [http-nio-8080-exec-3] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String com.example.demo.controller.IdNumberController.doSearch(com.example.demo.entity.Patient,jakarta.servlet.http.HttpSession): [Field error in object 'patient' on field 'idNumber': rejected value [A12345678]; codes [Pattern.patient.idNumber,Pattern.idNumber,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [patient.idNumber,idNumber]; arguments []; default message [idNumber],[Ljakarta.validation.constraints.Pattern$Flag;@d2bb03e,^[A-Z]\d{9}$]; default message [英文為大寫且數字為9碼]] ]
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 13816 (C:\Users\yvonne\112project\test4\target\classes started by yvonne in C:\Users\yvonne\112project\test4)
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat initialized with port(s): 8080 (http)
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardService ==== Starting service [Tomcat]
+2024-03-16 === [restartedMain] === INFO  === org.apache.catalina.core.StandardEngine ==== Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-03-16 === [restartedMain] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring embedded WebApplicationContext
+2024-03-16 === [restartedMain] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ==== Root WebApplicationContext: initialization completed in 1880 ms
+2024-03-16 === [restartedMain] === INFO  === o.s.b.d.autoconfigure.OptionalLiveReloadServer ==== LiveReload server is running on port 35729
+2024-03-16 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-16 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Started SpringBootDemoApplication in 4.004 seconds (process running for 4.49)
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Initializing Servlet 'dispatcherServlet'
+2024-03-16 === [http-nio-8080-exec-4] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Completed initialization in 0 ms
+2024-03-16 === [http-nio-8080-exec-4] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'userId' for method parameter type String is not present]
+2024-03-16 === [http-nio-8080-exec-3] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'userId' for method parameter type String is not present]
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-03-16 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 15
+2024-03-16 === [http-nio-8080-exec-2] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2024-03-16 === [http-nio-8080-exec-5] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2024-03-16 === [http-nio-8080-exec-6] === WARN  === o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver ==== Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'userId' for method parameter type String is not present]

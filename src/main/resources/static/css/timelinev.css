@@ -1,0 +1,248 @@
+
+@charset "UTF-8";
+body {
+    background-color: #EEE;
+}
+
+
+main {
+    width: 850px;
+    color: #444;
+    
+    text-align: center;
+    margin: 80px auto;
+}
+
+main h1 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+main form {
+    display: grid;
+}
+
+.form-data {
+    text-align: left;
+    margin-right: 80px;
+    margin-top: 32px;
+    font-size: 20px;
+}
+
+.form-input .input-area {
+    height: 40px;
+    background-color: #FFF;
+    margin-top: 8px;
+
+    display: flex;
+    align-items: center;
+}
+
+.form-input .input-area input {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    font-size: 16px;
+    padding: 0px 8px;
+}
+
+main form button {
+    width: 60%;
+    height: 40px;
+    background-color: #444;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #FFF;
+    font-size: 16px;
+    margin: 64px auto 16px;
+}
+
+main form button:hover {
+    background-color: #000;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+main input{
+    transform: scale(1.5);
+    margin-right: 0.1em; /* 調整 checkbox 與文字之間的距離 */
+}
+
+main label {
+    font-size: 20px;
+    margin-right: 0.5em;/* 調整 checkbox 與文字之間的距離 */
+}
+
+.col select {
+    width: 85%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+main #filterTimeline {
+    width: 60%;
+    height: 40px;
+    background-color: #444;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #FFF;
+    font-size: 16px;
+    margin: 16px auto; /* 調整上下邊距 */
+    display: block; /* 讓按鈕佔據整個父容器寬度 */
+}
+
+#timeline {
+    overflow: hidden;
+    width: 100%;
+}
+
+#timeline div {
+    height: 231px;
+}
+
+#timeline div .date {
+    border-right: 5px rgba(0, 0, 0, 0.4) solid;
+    text-align: right
+}
+
+#timeline div .date:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #000;
+    position: absolute;
+    left: 99.2%;
+    top: 88px;
+    border-radius: 20px;
+    cursor: pointer
+}
+
+#timeline div .date.inpatient:before {
+    background: rgb(153, 48, 198);
+}
+#timeline div.active .date.inpatient h2 {
+    color:rgb(153, 48, 198);
+}
+#timeline div .date.lab:before {
+    background: rgb(255, 0, 119);
+}
+#timeline div.active .date.lab h2 {
+    color:rgb(255, 0, 119);
+}
+#timeline div .date.check:before {
+    background: rgb(68, 73, 225);
+}
+#timeline div.active .date.check h2 {
+    color:rgb(68, 73, 225);
+}
+ #timeline div .date.emergency:before {
+    background: red;
+}
+#timeline div.active .date.emergency h2 {
+    color: red;
+} 
+#timeline div .date.outpatient:before {
+    background: #1aac1a; 
+}
+
+#timeline div.active .date.outpatient h2 {
+    color: #1aac1a; 
+}
+
+#timeline div .date.inpatient:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #000000;
+    position: absolute;
+    left: 99.2%;
+    top: 88px;
+    border-radius: 20px;
+    cursor: pointer
+}
+#timeline div .date.lab:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #000000;
+    position: absolute;
+    left: 99.2%;
+    top: 88px;
+    border-radius: 20px;
+    cursor: pointer
+}
+#timeline div .date.check:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #000000;
+    position: absolute;
+    left: 99.2%;
+    top: 88px;
+    border-radius: 20px;
+    cursor: pointer
+}
+#timeline div .date.outpatient:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #000000;
+    position: absolute;
+    left: 99.2%;
+    top: 88px;
+    border-radius: 20px;
+    cursor: pointer
+}
+#timeline div .date.emergency:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #000000;
+    position: absolute;
+    left: 99.2%;
+    top: 88px;
+    border-radius: 20px;
+    cursor: pointer
+}
+
+#timeline div.active .date::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: #0078FF;
+    position: absolute;
+    left: 98.7%;
+    top: 98px;
+    border-radius: 25px
+}
+
+#timeline div .date h2 {
+    margin: 72px 28px 0;
+    font-size: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #000;
+}
+
+#timeline div.active .date h2 {
+    font-size: 35px;
+    color: #0078FF;
+}
+
+#timeline div .text p {
+    font-size: 20px;
+    margin: 85px 50px 0;
+    width: 50%;
+    display: none;
+    color: #000;
+}
+
+
+#timeline div.active .text p {
+    font-size: 20px;
+    display: inherit;
+    color: #000;
+}
