@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.User;
+import com.example.demo.service.DetailsService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,18 +19,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 public class HospitalRestControoler {
     @Autowired
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private DetailsService detailsService;
 
     @PostMapping("/dataUpload")
     public String upload(@RequestBody User user) {
-        String sql = "INSERT INTO users(ID,USERID,USERNAME,PASSWORD) VALUES (:id,:userId,:username,:password)";
-        Map<String, Object> map = new HashMap<>();
-        map.put("id",user.getId());
-        map.put("userId",user.getUserId());
-        map.put("username",user.getUsername());
-        map.put("password",user.getPassword());
-        namedParameterJdbcTemplate.update(sql, map);
+        detailsService.uploadData(user);
         return "success";
     }
-    
 }

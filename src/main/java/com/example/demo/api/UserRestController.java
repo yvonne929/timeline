@@ -14,7 +14,7 @@ import com.example.demo.utils.JsonResult;
 //檢查使用者名稱是否已經被使用
 @RestController
 @RequestMapping(value = "/api/user")
-public class UserRestController { 
+public class UserRestController {
 
 	@Autowired
 	private UserService userService;
