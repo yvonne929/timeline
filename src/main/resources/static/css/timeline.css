@@ -13,6 +13,25 @@ main h1 {
     font-weight: 600;
 }
 
+table {
+    border: 0;
+    border-collapse: collapse;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 30px
+  }
+  th {
+    border: solid 1px #111212;
+    padding: 16px 8px;
+  }
+  td {
+    border: solid 1px #080808;
+    padding: 8px;
+    color: #757575;
+    text-align: center;
+  }
+
+
 main form {
     display: grid;
 }

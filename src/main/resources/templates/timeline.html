@@ -26,11 +26,27 @@
         		<form id="timelineForm" method="POST" th:action="@{/timeline}" enctype="multipart/form-data" autocomplete="off">
                     <section class="form-data">
                         <table>
-                            <p>病歷號：<span th:text="${patient.id}"></span></p>
-                            <p>身分證字號： <span th:text="${patient.idNumber}"></span></p>
-                            <p>姓名： <span th:text="${patient.name}"></span></p>
-                            <p>性別： <span th:text="${patient.gender}"></span></p>
-                            <p>出生年月日： <span th:text="${patient.birthday}"></span></p>
+                            <tr>
+                            <th>病歷號：</th>
+                            <th> <span th:text="${patient.id}"></span></th>
+                            
+                        
+                                <th>身分證字號：</th>
+                                <th> <span th:text="${patient.idNumber}"></span></th>
+                            </tr>
+
+                            <tr>
+                                <th>姓名：</th>
+                                <th> <span th:text="${patient.name}"></span></th>
+                       
+                                <th>性別：</th>
+                                <th> <span th:text="${patient.gender}"></span></th>
+                            </tr>
+                            <tr>
+                                <th>出生年月日：</th>
+                                <th> <span th:text="${patient.birthday}"></span></th>
+                            </tr>
+                            
                         </table>
                     </section>
                 </form>
@@ -158,7 +174,7 @@
 
         
         // 動態生成年份選項，這裡生成 1911 到當前年份的選項
-        for (var year = 1911; year <= currentYear; year++) {
+        for (var year = currentYear; year >= 1911; year--) {
             startYearSelect.append($('<option>', {
                 value: year,
                 text: year + "年"
@@ -172,19 +188,27 @@
 
         // 在 JavaScript 中添加篩選邏輯
         $('#filterTimeline').on('click', function () {
-        var startYear = $('#startYear').val();
-        var endYear = $('#endYear').val();
+            var startYear = $('#startYear').val();
+            var endYear = $('#endYear').val();
+            var selectedTypes = [];
 
-        // 隱藏所有時間軸項目
-        $('.timelineCont').hide();
+            // 找到被選中的類型
+            $('input[name="type"]:checked').each(function () {
+                selectedTypes.push($(this).val());
+            });
 
-        // 只顯示所選年份範圍內的項目
-        $('.timelineCont').filter(function () {
-            var itemDate = $(this).find('.date h2').text().trim();
-            var itemYear = new Date(itemDate).getFullYear();
-            return (itemYear >= parseInt(startYear) && itemYear <= parseInt(endYear));
-        }).show();
+            // 隱藏所有時間軸項
+            $('.timelineCont').hide();
+
+            // 只顯示所選年份範圍内和所選類型的項
+            $('.timelineCont').filter(function () {
+                var itemDate = $(this).find('.date h2').text().trim();
+                var itemYear = new Date(itemDate).getFullYear();
+                var itemType = $(this).find('.text p').text().trim();
+                return (itemYear >= parseInt(startYear) && itemYear <= parseInt(endYear) && selectedTypes.includes(itemType));
+            }).show();
         });
+
 
         // 監聽全選的變化
         $('#selectAll').change(function () {
