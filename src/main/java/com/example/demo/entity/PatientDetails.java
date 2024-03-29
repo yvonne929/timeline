@@ -17,7 +17,7 @@ public class PatientDetails {
     private String birthday;
     private String campus;
     private String department;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "GMT+8")
+    @JsonFormat(pattern = "MM/dd/yyyy HH:mm",timezone = "GMT+8")
     private java.sql.Timestamp time;
     private String specimen;
     private String orders;

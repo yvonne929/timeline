@@ -8,8 +8,10 @@ import com.example.demo.entity.PatientDetails;
 import com.example.demo.entity.User;
 import com.example.demo.service.DetailsService;
 
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -23,8 +25,10 @@ public class HospitalRestControoler {
     private DetailsService detailsService;
 
     @PostMapping("/dataUpload")
-    public String upload(@RequestBody PatientDetails patientDetails) {
-        detailsService.uploadData(patientDetails);
+    public String upload(@RequestBody List<PatientDetails> patientDetails) {
+        for (PatientDetails patientdetails : patientDetails) {
+            detailsService.uploadData(patientdetails);
+        }
         return "success";
     }
 }
