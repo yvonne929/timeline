@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.entity.PatientDetails;
 import com.example.demo.entity.User;
 import com.example.demo.service.DetailsService;
 
@@ -22,8 +23,8 @@ public class HospitalRestControoler {
     private DetailsService detailsService;
 
     @PostMapping("/dataUpload")
-    public String upload(@RequestBody User user) {
-        detailsService.uploadData(user);
+    public String upload(@RequestBody PatientDetails patientDetails) {
+        detailsService.uploadData(patientDetails);
         return "success";
     }
 }
