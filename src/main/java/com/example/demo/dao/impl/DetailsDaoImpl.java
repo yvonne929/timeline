@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.dao.DetailsDao;
 import com.example.demo.entity.PatientDetails;
-import com.example.demo.entity.User;
 
 @Component
 public class DetailsDaoImpl implements DetailsDao{
@@ -18,9 +17,10 @@ public class DetailsDaoImpl implements DetailsDao{
 
     @Override
     public void uploadData(PatientDetails patientDetails){
-        String sql = "INSERT INTO patientdetails(CAMPUS,IDNUMBER,TIME,SPECIMEN,ORDERS,WARNING,TESTVALUE,UNIT,REFERENCEVALUE) VALUES (:campus,:idnumber,:time,:specimen,:orders,:warning,:testvalue,:unit,:referencevalue)";
+        String sql = "INSERT INTO patientdetails(CAMPUS,DEPARTMENT,IDNUMBER,TIME,SPECIMEN,ORDERS,WARNING,TESTVALUE,UNIT,REFERENCEVALUE) VALUES (:campus,:department,:idnumber,:time,:specimen,:orders,:warning,:testvalue,:unit,:referencevalue)";
         Map<String, Object> map = new HashMap<>();
         map.put("campus",patientDetails.getCampus());
+        map.put("department",patientDetails.getDepartment());
         map.put("idnumber",patientDetails.getIdnumber());
         map.put("name",patientDetails.getName());
         map.put("gender",patientDetails.getGender());

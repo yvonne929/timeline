@@ -27,26 +27,20 @@
                     <section class="form-data">
                         <table>
                             <tr>
-                            <th>病歷號：</th>
-                            <th> <span th:text="${patient.id}"></span></th>
-                            
-                        
                                 <th>身分證字號：</th>
                                 <th> <span th:text="${patient.idNumber}"></span></th>
+
+                                <th>姓名：</th>
+                                <th> <span th:text="${patient.name}"></span></th>
                             </tr>
 
                             <tr>
-                                <th>姓名：</th>
-                                <th> <span th:text="${patient.name}"></span></th>
-                       
                                 <th>性別：</th>
                                 <th> <span th:text="${patient.gender}"></span></th>
-                            </tr>
-                            <tr>
+                       
                                 <th>出生年月日：</th>
                                 <th> <span th:text="${patient.birthday}"></span></th>
                             </tr>
-                            
                         </table>
                     </section>
                 </form>
@@ -113,20 +107,20 @@
                 </div>
             </div>
             
-            <div class="timelineCont col-12" style="margin-top: 0px;" th:each="patient : ${dataList}">
+            <div class="timelineCont col-12" style="margin-top: 0px;" th:each="patientDetails : ${dataList}">
                 <div class="row">
                     <div class="date col-5"
-                    th:classappend="${patient.department == '門診' ? 'outpatient' : 
-                                     (patient.department == '急診' ? 'emergency' : 
-                                     (patient.department == '檢查' ? 'check' : 
-                                     (patient.department == '檢驗' ? 'lab' : 
-                                     (patient.department == '住院' ? 'inpatient' : ''))))}">
-                        <h2 th:text="${patient.department}+ ' ' +${patient.time}"></h2>
+                    th:classappend="${patientDetails.department == '門診' ? 'outpatient' : 
+                                     (patientDetails.department == '急診' ? 'emergency' : 
+                                     (patientDetails.department == '檢查' ? 'check' : 
+                                     (patientDetails.department == '檢驗' ? 'lab' : 
+                                     (patientDetails.department == '住院' ? 'inpatient' : ''))))}">
+                        <h2 th:text="${patientDetails.department}+ ' ' + ${#dates.format(patientDetails.time, 'yyyy-MM-dd')}"></h2>
                     </div>
     
                     <div class="text col-7">
-                        <p th:text="${patient.department}"></p>
-                        <!-- <a th:href="@{/details(id=${patient.id})}" class="btn btn-primary">查看詳細病歷</a> -->
+                        <p th:text="${patientDetails.department}"></p>
+                        <a th:href="@{/details(id=${patientDetails.id})}" class="btn btn-primary">查看詳細病歷</a>
                     </div>
                 </div>
             </div> 
@@ -249,6 +243,7 @@
                 });
             }
         });
+        
 
 
     </script>

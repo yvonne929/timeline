@@ -22,6 +22,5 @@ public class Patient {
     private String gender;
     private java.sql.Date birthday;
     private String department;
-    private java.sql.Date year;
     private java.sql.Date time;
 }
