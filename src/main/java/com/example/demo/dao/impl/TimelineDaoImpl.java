@@ -18,7 +18,7 @@ public class TimelineDaoImpl implements TimelineDao{
     public List getListData(String idNumber) {
         List dataList = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM patientdetails WHERE idnumber = ?";
+            String sql = "SELECT * FROM patientdetails WHERE idnumber = ? ORDER BY time DESC";
             dataList = jdbcTemplate.queryForList(sql, idNumber);
 
         } catch (Exception e) {

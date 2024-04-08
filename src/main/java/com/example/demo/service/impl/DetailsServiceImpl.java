@@ -16,4 +16,9 @@ public class DetailsServiceImpl implements DetailsService{
     public void uploadData(PatientDetails patientDetails) {
         detailsDao.uploadData(patientDetails);
     }
+
+    @Override
+    public void getPatientDetailsByIdnubmer(String idnumber){
+        detailsDao.getPatientDetailsByIdnumber(idnumber);
+    }
 }

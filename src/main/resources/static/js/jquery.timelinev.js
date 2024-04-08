@@ -41,29 +41,21 @@ jQuery.fn.timelinev = function(options){
         //Bind click on date
         $(settings.containerDivs).find(settings.dateDiv).click(function(event){
             event.preventDefault();
-            var dateSelected=$(this).find(settings.dateHtml);
-            var posDate=dates.indexOf(dateSelected.html());
-
-            if(posDate > dateActive && posDate!==dates.length){
+            var dateSelected = $(this).find(settings.dateHtml);
+            var posDate = dates.indexOf(dateSelected.html());
+        
+            if (!$(this).parent().hasClass('active')) {
                 divsCont.removeClass('active');
-                dateSelected.parent().parent().parent().addClass('active');
-
-                // if ((dateActive+1)!=(divsCont.length-2)){
-                //     decrementDate();
-                // }
-
-                dateActive=posDate;
-            }
-
-            if(posDate < dateActive && posDate!==0){
-                divsCont.removeClass('active');
-                dateSelected.parent().parent().parent().addClass('active');
-
-                // incrementDate();
-                dateActive=posDate;
+                $(this).parent().addClass('active');
+                dateActive = posDate;
+            } else {
+                $(this).parent().removeClass('active');
+                dateActive = -1; // Reset dateActive to indicate no active date
             }
         });
-
+        
+        
+        
         //Bind scroll
         // settings.timelineDiv.bind('mousewheel DOMMouseScroll', function (event) {
         //     event.preventDefault();

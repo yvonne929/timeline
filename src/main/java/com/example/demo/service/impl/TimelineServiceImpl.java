@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class TimelineServiceImpl implements TimelineService {
         List dataList = new ArrayList<>();
         try {
             dataList = timelineDao.getListData(idNumber);
+            // 按照時間排序
+            Collections.sort(dataList);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
