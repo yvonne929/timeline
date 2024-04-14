@@ -13,9 +13,8 @@ public class DetailsController {
     @Autowired
 	    private DetailsService detailsService;
 
-    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
-	    public String showDetails(@PathVariable("id") String idnumber) {
-            detailsService.getPatientDetailsByIdnubmer(idnumber);
+    @RequestMapping(value = "/details", method = RequestMethod.GET)
+	    public String showDetails() {
 		return "details";
 	    }
 }

@@ -11,24 +11,17 @@
     <section th:replace="~{load/header :: header}"></section>
     <section class="main-content">
         <div class="content">
-            <main>
-                <h1>基本資料及時間軸</h1>
-        		<form id="detailsForm" method="POST" th:action="@{/details}" enctype="multipart/form-data" autocomplete="off">
-                    <section class="form-data">
-                        <table>
-                            <p>病歷號：<span th:text="${patient.id}"></span></p>
-                            <p>身分證字號： <span th:text="${patient.ic}"></span></p>
-                            <p>姓名： <span th:text="${patient.name}"></span></p>
-                            <p>性別： <span th:text="${patient.gender}"></span></p>
-                            <p>出生年月日： <span th:text="${patient.birthday}"></span></p>
-                            <p>描述： <span th:text="${patient.description}"></span></p>
-                        </table>
-                    </section>
-                </form>
-            </main>        
-        </div>
+    <main>
+        <form id=detailsForm method="POST" th:action="@{/details}" enctype="multipart/form-data" autocomplete="off">
+            <section class="form-data">
+                <table>
+                    
+                </table>
+            </section>
+        </form>
+    </main>   
+    </div>
     </section>
     <section th:replace="~{load/footer :: footer}"></section>
-    <script th:replace="~{load/js :: js}"></script>
 </body>
 </html>

@@ -4,5 +4,5 @@ import com.example.demo.entity.PatientDetails;
 
 public interface DetailsService {
     public void uploadData(PatientDetails patientDetails);
-    public void getPatientDetailsByIdnubmer(String idnumber);
+    public void getPatientDetailsByIdnumber(String idnumber);
 }

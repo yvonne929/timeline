@@ -18,7 +18,7 @@ public class DetailsServiceImpl implements DetailsService{
     }
 
     @Override
-    public void getPatientDetailsByIdnubmer(String idnumber){
+    public void getPatientDetailsByIdnumber(String idnumber){
         detailsDao.getPatientDetailsByIdnumber(idnumber);
     }
 }

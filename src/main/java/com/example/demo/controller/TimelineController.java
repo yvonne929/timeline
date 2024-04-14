@@ -37,10 +37,4 @@ public class TimelineController {
         return "timeline";
 
     }
-
-    @RequestMapping(value = "/details", method = RequestMethod.GET)
-	    public String details() {
-		
-		return "details";
-	    }
 }

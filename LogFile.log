@@ -1,32 +1,32 @@
-2024-04-08 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 7984 (C:\Users\yvonne\112project\test4\target\classes started by yvonne in C:\Users\yvonne\112project\test4)
-2024-04-08 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
-2024-04-08 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-04-08 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-04-08 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat initialized with port(s): 8080 (http)
-2024-04-08 === [restartedMain] === INFO  === org.apache.catalina.core.StandardService ==== Starting service [Tomcat]
-2024-04-08 === [restartedMain] === INFO  === org.apache.catalina.core.StandardEngine ==== Starting Servlet engine: [Apache Tomcat/10.1.15]
-2024-04-08 === [restartedMain] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring embedded WebApplicationContext
-2024-04-08 === [restartedMain] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ==== Root WebApplicationContext: initialization completed in 3090 ms
-2024-04-08 === [restartedMain] === INFO  === o.s.b.d.autoconfigure.OptionalLiveReloadServer ==== LiveReload server is running on port 35729
-2024-04-08 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat started on port(s): 8080 (http) with context path ''
-2024-04-08 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Started SpringBootDemoApplication in 5.402 seconds (process running for 6.444)
-2024-04-08 === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-04-08 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Initializing Servlet 'dispatcherServlet'
-2024-04-08 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Completed initialization in 1 ms
-2024-04-08 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
-2024-04-08 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
-2024-04-08 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
-2024-04-08 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
-2024-04-08 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 11
-2024-04-08 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
-2024-04-08 === [http-nio-8080-exec-6] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Starting...
-2024-04-08 === [http-nio-8080-exec-6] === INFO  === com.zaxxer.hikari.pool.HikariPool ==== HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1668d4a9
-2024-04-08 === [http-nio-8080-exec-6] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Start completed.
-2024-04-08 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
-2024-04-08 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:search
-2024-04-08 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
-2024-04-08 === [http-nio-8080-exec-6] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin Time spent: 1728
-2024-04-08 === [http-nio-8080-exec-4] === ERROR === org.thymeleaf.TemplateEngine ==== [THYMELEAF][http-nio-8080-exec-4] Exception processing template "details": An error happened during template parsing (template: "class path resource [templates/details.html]")
+2024-04-14 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 20500 (C:\Users\yvonne\112project\test4\target\classes started by yvonne in C:\Users\yvonne\112project\test4)
+2024-04-14 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
+2024-04-14 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-14 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-14 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat initialized with port(s): 8080 (http)
+2024-04-14 === [restartedMain] === INFO  === org.apache.catalina.core.StandardService ==== Starting service [Tomcat]
+2024-04-14 === [restartedMain] === INFO  === org.apache.catalina.core.StandardEngine ==== Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-04-14 === [restartedMain] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring embedded WebApplicationContext
+2024-04-14 === [restartedMain] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ==== Root WebApplicationContext: initialization completed in 2159 ms
+2024-04-14 === [restartedMain] === INFO  === o.s.b.d.autoconfigure.OptionalLiveReloadServer ==== LiveReload server is running on port 35729
+2024-04-14 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat started on port(s): 8080 (http) with context path ''
+2024-04-14 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Started SpringBootDemoApplication in 3.589 seconds (process running for 4.127)
+2024-04-14 === [http-nio-8080-exec-2] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-14 === [http-nio-8080-exec-2] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Initializing Servlet 'dispatcherServlet'
+2024-04-14 === [http-nio-8080-exec-2] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Completed initialization in 1 ms
+2024-04-14 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-04-14 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-04-14 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-04-14 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-04-14 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 12
+2024-04-14 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-04-14 === [http-nio-8080-exec-7] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Starting...
+2024-04-14 === [http-nio-8080-exec-7] === INFO  === com.zaxxer.hikari.pool.HikariPool ==== HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e1d2cc9
+2024-04-14 === [http-nio-8080-exec-7] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Start completed.
+2024-04-14 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-04-14 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:search
+2024-04-14 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-04-14 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin Time spent: 937
+2024-04-14 === [http-nio-8080-exec-7] === ERROR === org.thymeleaf.TemplateEngine ==== [THYMELEAF][http-nio-8080-exec-7] Exception processing template "details": An error happened during template parsing (template: "class path resource [templates/details.html]")
 org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/details.html]")
 	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241)
 	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100)
@@ -113,7 +113,7 @@ Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1007E:
 	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338)
 	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265)
 	... 69 common frames omitted
-2024-04-08 === [http-nio-8080-exec-4] === ERROR === o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] ==== Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/details.html]")] with root cause
+2024-04-14 === [http-nio-8080-exec-7] === ERROR === o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] ==== Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/details.html]")] with root cause
 org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'id' cannot be found on null
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:224)
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:111)
