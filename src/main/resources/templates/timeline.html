@@ -107,20 +107,20 @@
                 </div>
             </div>
             
-            <div class="timelineCont col-12" style="margin-top: 0px;" th:each="patientDetails : ${dataList}">
+            <div class="timelineCont col-12" style="margin-top: 0px;" th:each="dataList: ${dataList}">
                 <div class="row">
                     <div class="date col-5"
-                    th:classappend="${patientDetails.department == '門診' ? 'outpatient' : 
-                                     (patientDetails.department == '急診' ? 'emergency' : 
-                                     (patientDetails.department == '檢查' ? 'check' : 
-                                     (patientDetails.department == '檢驗' ? 'lab' : 
-                                     (patientDetails.department == '住院' ? 'inpatient' : ''))))}">
-                        <h2 th:text="${patientDetails.department}+ ' ' + ${#dates.format(patientDetails.time, 'yyyy-MM-dd')}"></h2>
+                    th:classappend="${dataList.department == '門診' ? 'outpatient' : 
+                                     (dataList.department == '急診' ? 'emergency' : 
+                                     (dataList.department == '檢查' ? 'check' : 
+                                     (dataList.department == '檢驗' ? 'lab' : 
+                                     (dataList.department == '住院' ? 'inpatient' : ''))))}">
+                        <h2 th:text="${dataList.department}+ ' ' + ${#dates.format(dataList.time, 'yyyy-MM-dd')}"></h2>
                     </div>
     
                     <div class="text col-7">
-                        <p th:text="${patientDetails.department}"></p>
-                        <a th:href="@{/details(id=${patientDetails.id})}" class="btn btn-primary">查看詳細病歷</a>
+                        <p th:text="${dataList.department}"></p>
+                        <a th:href="@{/details}" class="btn btn-primary">查看詳細病歷</a>
                     </div>
                 </div>
             </div> 
