@@ -19,11 +19,11 @@ public class TimelineDaoImpl implements TimelineDao{
     public List getListData(String idNumber) {
         List<Map<String, Object>> dataList = new ArrayList<>();
     try {
-        String sql1 = "SELECT department, time FROM patientdetails WHERE idnumber = ? ORDER BY time DESC";
+        String sql1 = "SELECT department, time , id FROM patientdetails WHERE idnumber = ? ORDER BY time DESC";
         List<Map<String, Object>> result1 = jdbcTemplate.queryForList(sql1, idNumber);
         dataList.addAll(result1);
 
-        String sql2 = "SELECT department,time FROM opd WHERE idnumber = ? ORDER BY time DESC";
+        String sql2 = "SELECT department, time , id FROM opd WHERE idnumber = ? ORDER BY time DESC";
         List<Map<String, Object>> result2 = jdbcTemplate.queryForList(sql2, idNumber);
         dataList.addAll(result2);
 
@@ -31,7 +31,7 @@ public class TimelineDaoImpl implements TimelineDao{
         for (Map<String, Object> row : dataList) {
             System.out.println(row);
         }
-            System.out.println(dataList);
+
         } catch (Exception e) {
             System.out.println(e.toString());
         }

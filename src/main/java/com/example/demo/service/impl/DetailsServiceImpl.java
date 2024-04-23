@@ -1,13 +1,17 @@
 package com.example.demo.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.DetailsDao;
 import com.example.demo.entity.PatientDetails;
 import com.example.demo.service.DetailsService;
 
-@Component
+@Service
 public class DetailsServiceImpl implements DetailsService{
     @Autowired
     private DetailsDao detailsDao;
@@ -17,8 +21,15 @@ public class DetailsServiceImpl implements DetailsService{
         detailsDao.uploadData(patientDetails);
     }
 
+    //未完成
     @Override
-    public void getPatientDetailsByIdnumber(String idnumber){
-        detailsDao.getPatientDetailsByIdnumber(idnumber);
+    public List getPatientDetailsByIdnumber(String id){
+            List dataList = new ArrayList<>();
+            try {
+                dataList = detailsDao.getPatientDetailsByIdnumber(id);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+            return dataList;
     }
 }

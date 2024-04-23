@@ -41,19 +41,27 @@ public class DetailsDaoImpl implements DetailsDao{
         namedParameterJdbcTemplate.update(sql, map);
     }
 
+    //未完成
     @Override
-    public PatientDetails getPatientDetailsByIdnumber(String idnumber) {
-        PatientDetails patientDetails = null;
+    public List getPatientDetailsByIdnumber(String id) {
+        List<Map<String, Object>> dataList = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM patientdetails WHERE idnumber = ?";
-            List<PatientDetails> resultList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<PatientDetails>(PatientDetails.class), new Object[] { idnumber });
-            PatientDetails result = null;
-            if (!resultList.isEmpty()) {
-                result = resultList.get(0);
-            }} catch (Exception e) {
+            String sql1 = "SELECT * FROM patientdetails WHERE department = ? AND id = ? ";
+            List<Map<String, Object>> result1 = jdbcTemplate.queryForList(sql1, id);
+            dataList.addAll(result1);
+
+            String sql2 = "SELECT * FROM opd WHERE department = ? AND id = ? ";
+            List<Map<String, Object>> result2 = jdbcTemplate.queryForList(sql2, id);
+            dataList.addAll(result2);
+
+            for (Map<String, Object> row : dataList) {
+            System.out.println(row);
+            }
+
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
-        return patientDetails;
+        return dataList;
     }
 }
 

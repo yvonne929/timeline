@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>詳細病歷</title>
     <head th:insert="~{load/css :: css}"></head>
-    <link rel="stylesheet" th:href="@{/css/search.css}">
+    <link rel="stylesheet" th:href="@{/css/details.css}">
 </head>
 <body>
     <section th:replace="~{load/header :: header}"></section>
@@ -15,10 +15,27 @@
         <form id=detailsForm method="POST" th:action="@{/details}" enctype="multipart/form-data" autocomplete="off">
             <section class="form-data">
                 <table>
-                    
+                    <tr>
+                        <th>身分證字號：</th>
+                        <th> <span th:text="${patient.idNumber}"></span></th>
+
+                        <th>姓名：</th>
+                        <th> <span th:text="${patient.name}"></span></th>
+                    </tr>
+
+                    <tr>
+                        <th>性別：</th>
+                        <th> <span th:text="${patient.gender}"></span></th>
+               
+                        <th>出生年月日：</th>
+                        <th> <span th:text="${patient.birthday}"></span></th>
+                    </tr>
                 </table>
+                <a th:href="@{/timeline}" class="btn btn-primary">返回</a>
             </section>
         </form>
+    </section>
+        
     </main>   
     </div>
     </section>
