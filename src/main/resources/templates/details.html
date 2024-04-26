@@ -31,7 +31,13 @@
                         <th> <span th:text="${patient.birthday}"></span></th>
                     </tr>
                 </table>
-                <a th:href="@{/timeline}" class="btn btn-primary">返回</a>
+                <a th:href="@{/timeline}" href="javascript: void(0)" class="btn">
+                    <span>返回</span>
+                    <svg width="13px" height="10px" viewBox="0 0 13 10">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </a>
             </section>
         </form>
     </section>
