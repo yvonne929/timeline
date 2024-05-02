@@ -19,13 +19,16 @@ public class TimelineDaoImpl implements TimelineDao{
     public List getListData(String idNumber) {
         List<Map<String, Object>> dataList = new ArrayList<>();
     try {
-        String sql1 = "SELECT department, time , id FROM patientdetails WHERE idnumber = ? ORDER BY time DESC";
-        List<Map<String, Object>> result1 = jdbcTemplate.queryForList(sql1, idNumber);
-        dataList.addAll(result1);
-
-        String sql2 = "SELECT department, time , id FROM opd WHERE idnumber = ? ORDER BY time DESC";
-        List<Map<String, Object>> result2 = jdbcTemplate.queryForList(sql2, idNumber);
-        dataList.addAll(result2);
+         // 查询
+         String sqlPatientDetails = 
+         "SELECT id, campus, department, idnumber, time, specimen, orders, warning, testvalue, unit, referencevalue FROM patientdetails WHERE idnumber = ? " +
+         "UNION ALL " +
+         "SELECT id, campus, department, idnumber, time, null as specimen, null as orders, null as warning, null as testvalue, null as unit, null as referencevalue FROM opd WHERE idnumber = ? " +
+        //  "UNION ALL " +
+        //  "SELECT id, campus, department, idnumber, time, null as specimen, null as orders, null as warning, null as testvalue, null as unit, null as referencevalue FROM er WHERE idnumber = ? " +
+         "ORDER BY time DESC";
+            List<Map<String, Object>> result = jdbcTemplate.queryForList(sqlPatientDetails, idNumber, idNumber);
+            dataList.addAll(result);
 
         //印出結果
         for (Map<String, Object> row : dataList) {

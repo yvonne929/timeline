@@ -60,6 +60,18 @@ main form {
     font-size: 16px;
     padding: 0px 8px;
 }
+.btn-warning {
+    color: #fff !important; /* 設置按鈕文字顏色為白色 */
+    background-color: rgb(189, 84, 84) !important; /* 設置按鈕背景色為紅色 */
+    border-color: rgb(189, 84, 84) !important; /* 設置按鈕邊框色為紅色 */
+}
+
+.btn-warning:hover {
+    background-color: darkred !important; /* 懸停時設置更深的紅色 */
+    border-color: darkred !important;
+}
+
+
 
 main form button {
     width: 60%;
@@ -77,4 +89,23 @@ main form button:hover {
     border: 1px solid #000;
     cursor: pointer;
 }
+.btn-warning:hover {
+    position: relative; /* 這是為了給懸浮文字設定相對定位 */
+}
+
+.btn-warning:hover::after {
+    content: "警示: " attr(data-tooltip) ", 檢體: " attr(data-specimen) ", 檢驗值: " attr(data-test-value);
+    /* 這裡使用 attr(data-*) 來獲取對應的屬性值，並在每個屬性之間添加適當的分隔符號 */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
 

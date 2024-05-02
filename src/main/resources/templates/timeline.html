@@ -115,13 +115,26 @@
                                      (dataList.department == '檢查' ? 'check' : 
                                      (dataList.department == '檢驗' ? 'lab' : 
                                      (dataList.department == '住院' ? 'inpatient' : ''))))}">
-                        <h2 th:text="${dataList.department}+ ' ' + ${#dates.format(dataList.time, 'yyyy-MM-dd')}"></h2>
+                        
+                        <h2>
+                            <img th:if="${dataList.department == '住院'}"  th:src="@{/images/IPD.png}"  />
+                            <img th:if="${dataList.department == '門診'}"  th:src="@{/images/OPD.png}"  />
+                            <img th:if="${dataList.department == '檢查'}" th:src="@{/images/RX.png}" />
+                            <img th:if="${dataList.department == '檢驗'}" th:src="@{/images/LAB.png}" />
+                            <img th:if="${dataList.department == '急診'}" th:src="@{/images/ER.png}" />
+            
+                            <span th:text="${dataList.department} + ' ' + ${#dates.format(dataList.time, 'yyyy-MM-dd')}"></span>
+                        </h2>           
                     </div>
     
                     <div class="text col-7">
                         <p th:text="${dataList.department}"></p>
-                        <!-- <a th:href="@{/details(id=${dataList.id})}" class="btn btn-primary">查看詳細病歷</a> -->
                         <a th:href="@{/details}" class="btn btn-primary">查看詳細病歷</a>
+                        <span th:if="${dataList.warning != null}" class="warning">
+                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#warningModal1" th:attr="data-tooltip=${dataList.warning}, data-specimen=${dataList.specimen}, data-test-value=${dataList.testvalue}">警告</button>
+
+                            <p th:text="${dataList.warning}" style="display: none;"></p>
+                        </span>
                     </div>
                 </div>
             </div> 
