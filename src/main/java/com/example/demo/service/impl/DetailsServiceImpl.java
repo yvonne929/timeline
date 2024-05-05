@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.DetailsDao;
-import com.example.demo.entity.PatientDetails;
+import com.example.demo.entity.Lab;
 import com.example.demo.service.DetailsService;
 
 @Service
@@ -17,7 +17,7 @@ public class DetailsServiceImpl implements DetailsService{
     private DetailsDao detailsDao;
 
     @Override
-    public void uploadData(PatientDetails patientDetails) {
+    public void uploadData(Lab patientDetails) {
         detailsDao.uploadData(patientDetails);
     }
 

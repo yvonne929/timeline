@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.dao.DetailsDao;
 import com.example.demo.entity.Patient;
-import com.example.demo.entity.PatientDetails;
+import com.example.demo.entity.Lab;
 
 @Component
 public class DetailsDaoImpl implements DetailsDao{
@@ -22,7 +22,7 @@ public class DetailsDaoImpl implements DetailsDao{
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
-    public void uploadData(PatientDetails patientDetails){
+    public void uploadData(Lab patientDetails){
         String sql = "INSERT INTO patientdetails(CAMPUS,DEPARTMENT,IDNUMBER,TIME,SPECIMEN,ORDERS,WARNING,TESTVALUE,UNIT,REFERENCEVALUE) VALUES (:campus,:department,:idnumber,:time,:specimen,:orders,:warning,:testvalue,:unit,:referencevalue)";
         Map<String, Object> map = new HashMap<>();
         map.put("campus",patientDetails.getCampus());
