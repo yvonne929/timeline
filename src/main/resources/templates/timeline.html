@@ -133,7 +133,7 @@
                         <span th:if="${dataList.warning != null}" class="warning">
                             <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#warningModal1" th:attr="data-tooltip=${dataList.warning}, data-specimen=${dataList.specimen}, data-test-value=${dataList.testvalue}">警告</button>
 
-                            <p th:text="${dataList.warning}" style="display: none;"></p>
+                            <h1 th:text="${dataList.warning}" style="display: none;"></h1>
                         </span>
                     </div>
                 </div>
@@ -148,7 +148,8 @@
                         <p></p>
                     </div>
                 </div>
-            </div>           
+            </div>   
+            <button onclick="scrollToTop()" id="scrollTopBtn" title="返回顶部">↑</button>      
         </div>   
     </section>
     
@@ -257,7 +258,30 @@
                 });
             }
         });
-        
+
+        //向上滾動
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            var scrollTopBtn = document.getElementById("scrollTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollTopBtn.style.display = "block";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            var scrollToTopInterval = setInterval(function() {
+                var scrollToTopBtn = document.getElementById("scrollTopBtn");
+                var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+                if (currentPosition > 0) {
+                    window.scrollBy(0, -50); // 每次滾動上去的距離，數字越大滾越快
+                } else {
+                    clearInterval(scrollToTopInterval);
+                }
+            }, 10); // 滾動的時間間隔，數字越小滾得越快
+        }
 
 
     </script>
