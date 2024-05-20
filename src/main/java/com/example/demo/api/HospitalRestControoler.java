@@ -2,7 +2,7 @@ package com.example.demo.api;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.Lab;
+import com.example.demo.entity.PatientDetails;
 import com.example.demo.service.DetailsService;
 
 import java.util.List;
@@ -17,11 +17,19 @@ public class HospitalRestControoler {
     @Autowired
     private DetailsService detailsService;
 
-    @PostMapping("/dataUpload")
-    public String upload(@RequestBody List<Lab> patientDetails) {
-        for (Lab patientdetails : patientDetails) {
-            detailsService.uploadData(patientdetails);
+    @PostMapping("/labDataUpload")
+    public String uploadLab(@RequestBody List<PatientDetails> labDetails) {
+        for (PatientDetails patientdetails : labDetails) {
+            detailsService.uploadLabData(patientdetails);
         }
-        return "success";
+        return "Lab data uploaded successfully";
+    }
+
+    @PostMapping("/opdDataUpload")
+    public String uploadOpd(@RequestBody List<PatientDetails> opdDetails) {
+        for (PatientDetails patientdetails : opdDetails) {
+            detailsService.uploadOpdData(patientdetails);
+        }
+        return "Opd data uploaded successfully";
     }
 }

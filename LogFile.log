@@ -1,28 +1,33 @@
-2024-05-17 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 7408 (C:\Users\yvonne\112project\test4\target\classes started by yvonne in C:\Users\yvonne\112project\test4)
-2024-05-17 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
-2024-05-17 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-05-17 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-05-17 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat initialized with port(s): 8080 (http)
-2024-05-17 === [restartedMain] === INFO  === org.apache.catalina.core.StandardService ==== Starting service [Tomcat]
-2024-05-17 === [restartedMain] === INFO  === org.apache.catalina.core.StandardEngine ==== Starting Servlet engine: [Apache Tomcat/10.1.15]
-2024-05-17 === [restartedMain] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring embedded WebApplicationContext
-2024-05-17 === [restartedMain] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ==== Root WebApplicationContext: initialization completed in 2457 ms
-2024-05-17 === [restartedMain] === INFO  === o.s.b.d.autoconfigure.OptionalLiveReloadServer ==== LiveReload server is running on port 35729
-2024-05-17 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat started on port(s): 8080 (http) with context path ''
-2024-05-17 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Started SpringBootDemoApplication in 4.337 seconds (process running for 5.291)
-2024-05-17 === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-05-17 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Initializing Servlet 'dispatcherServlet'
-2024-05-17 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Completed initialization in 0 ms
-2024-05-17 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
-2024-05-17 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
-2024-05-17 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
-2024-05-17 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
-2024-05-17 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 17
-2024-05-17 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
-2024-05-17 === [http-nio-8080-exec-7] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Starting...
-2024-05-17 === [http-nio-8080-exec-7] === INFO  === com.zaxxer.hikari.pool.HikariPool ==== HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a5fcfcf
-2024-05-17 === [http-nio-8080-exec-7] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Start completed.
-2024-05-17 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
-2024-05-17 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:search
-2024-05-17 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
-2024-05-17 === [http-nio-8080-exec-7] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin Time spent: 1387
+2024-05-20 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Starting SpringBootDemoApplication using Java 21.0.1 with PID 8000 (C:\Users\yvonne\112project\test4\target\classes started by yvonne in C:\Users\yvonne\112project\test4)
+2024-05-20 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== No active profile set, falling back to 1 default profile: "default"
+2024-05-20 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-20 === [restartedMain] === INFO  === o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor ==== For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-20 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat initialized with port(s): 8080 (http)
+2024-05-20 === [restartedMain] === INFO  === org.apache.catalina.core.StandardService ==== Starting service [Tomcat]
+2024-05-20 === [restartedMain] === INFO  === org.apache.catalina.core.StandardEngine ==== Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-05-20 === [restartedMain] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring embedded WebApplicationContext
+2024-05-20 === [restartedMain] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ==== Root WebApplicationContext: initialization completed in 2141 ms
+2024-05-20 === [restartedMain] === INFO  === o.s.b.d.autoconfigure.OptionalLiveReloadServer ==== LiveReload server is running on port 35729
+2024-05-20 === [restartedMain] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ==== Tomcat started on port(s): 8080 (http) with context path ''
+2024-05-20 === [restartedMain] === INFO  === com.example.demo.SpringBootDemoApplication ==== Started SpringBootDemoApplication in 3.86 seconds (process running for 4.463)
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ==== Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Initializing Servlet 'dispatcherServlet'
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ==== Completed initialization in 3 ms
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:login
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /logout Time spent: 27
+2024-05-20 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-05-20 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-05-20 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== Return: login
+2024-05-20 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login
+2024-05-20 === [http-nio-8080-exec-2] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /login Time spent: 9
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Starting...
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.zaxxer.hikari.pool.HikariPool ==== HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7ba89ab1
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.zaxxer.hikari.HikariDataSource ==== HikariPool-1 - Start completed.
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== Return: redirect:search
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin
+2024-05-20 === [http-nio-8080-exec-1] === INFO  === com.example.demo.aop.UserAspect ==== 訪問 /doLogin Time spent: 1597

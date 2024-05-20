@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>檢驗值折線圖</title>
+    <head th:insert="~{load/css :: css}"></head>
+    <link rel="stylesheet" th:href="@{/css/icon.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.1/darkly/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/timelinev.css}">
+    <script th:replace="~{load/js :: js}"></script>
+    <!-- <script th:src="@{/js/timeline.js}"></script> -->
+    <script th:src="@{/js/lib/jquery-3.4.1.js}"></script>
+    <!-- <script th:src="@{/js/jquery.timelinev.js}"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon"></script>
+    <style>
+        #testValueChart {
+            width: 100%;
+            height: 400px; 
+        }
+    </style>
+</head>
+<body>
+    <section th:replace="~{load/iconHeader :: iconHeader}"></section>
+    <section class="main-content">
+        <div class="content">
+            <main>
+                <h1>基本資料及折線圖</h1>
+                <section class="form-data">
+                    <table>
+                        <tr>
+                            <th>身分證字號：</th>
+                            <th><span th:text="${patient.idNumber}"></span></th>
+                            <th>姓名：</th>
+                            <th><span th:text="${patient.name}"></span></th>
+                        </tr>
+                        <tr>
+                            <th>性別：</th>
+                            <th><span th:text="${patient.gender}"></span></th>
+                            <th>出生年月日：</th>
+                            <th><span th:text="${patient.birthday}"></span></th>
+                        </tr>
+                    </table>
+                </section>
+
+                <div class="row">
+                    <label>選擇檢驗值：</label>
+                    <div class="col">
+                        <input type="radio" id="typeUrine" name="specimen" value="尿" checked>
+                        <label for="typeUrine">尿</label>
+                    </div>
+                    <div class="col">
+                        <input type="radio" id="typeBlood" name="specimen" value="血液">
+                        <label for="typeBlood">血液</label>
+                    </div>
+                
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="startYear">起始年份：</label>
+                        <select id="startYear" name="startYear"></select>
+                    </div>
+                    <div class="col">
+                        <label for="endYear">結束年份：</label>
+                        <select id="endYear" name="endYear"></select>
+                    </div>
+                    <div class="col">
+                        <button type="button" id="filterTimeline">篩選</button>
+                    </div>
+                </div> 
+
+                <div class="row">
+                    <canvas id="testValueChart"></canvas>
+                </div>
+                
+            </main>
+        </div>
+    </section>
+
+    <input type="hidden" id="patientIdNumber" th:value="${patient.idNumber}">
+
+    <script th:inline="javascript">
+    $(document).ready(function () {
+        var currentYear = new Date().getFullYear();
+        var startYearSelect = $('#startYear');
+        var endYearSelect = $('#endYear');
+        var allData = [];
+        var testValueChart;
+
+        function populateYearSelect(selectElement) {
+            selectElement.append($('<option>', { value: 'all', text: '請選擇年份' }));
+            for (var year = currentYear; year >= 1911; year--) {
+                selectElement.append($('<option>', { value: year, text: year + "年" }));
+            }
+        }
+
+        populateYearSelect(startYearSelect);
+        populateYearSelect(endYearSelect);
+
+        function initializeChart(data) {
+            var ctx = document.getElementById('testValueChart').getContext('2d');
+            testValueChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.map(function(v) { return v.time; }),
+                    datasets: [{
+                        label: '檢驗值',
+                        data: data.map(function(v) { return v.testvalue; }),
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                    // datasets: [{
+                    //     label: '尿',
+                    //     data: data.filter(function(v) { return v.specimen === '尿'; }).map(function(v) { return v.testvalue; }),
+                    //     backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    //     borderColor: 'rgba(54, 162, 235, 1)',
+                    //     borderWidth: 1
+                    // }, {
+                    //     label: '血液',
+                    //     data: data.filter(function(v) { return v.specimen === '血液'; }).map(function(v) { return v.testvalue; }),
+                    //     backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    //     borderColor: 'rgba(255, 99, 132, 1)',
+                    //     borderWidth: 1
+                    // }]
+
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'month'
+                            },
+                            ticks: {
+                                source: 'auto'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    maintainAspectRatio: false 
+                }
+            });
+        }
+        
+        function updateChart(data) {
+            testValueChart.data.labels = data.map(function(v) { return v.time; });
+            testValueChart.data.datasets[0].data = data.map(function(v) { return v.testvalue; });
+            testValueChart.update();
+        }
+
+        $.ajax({
+            type: "GET",
+            url: "/getListData",
+            data: { idNumber: $('#patientIdNumber').val() },
+            success: function (data) {
+                console.log("Data received:", data);
+                allData = data;
+                initializeChart(allData);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error("Error fetching data:", textStatus, errorThrown);
+            }
+        });
+
+        $('#filterTimeline').on('click', function () {
+            var selectedSpecimen = $('input[name="specimen"]:checked').val();
+            var startYear = $('#startYear').val();
+            var endYear = $('#endYear').val();
+
+            var filteredData = allData.filter(function(item) {
+                var itemYear = new Date(item.time).getFullYear();
+                return (startYear === 'all' || itemYear >= parseInt(startYear)) &&
+                       (endYear === 'all' || itemYear <= parseInt(endYear)) &&
+                       (selectedSpecimen === undefined || item.specimen === selectedSpecimen);
+            });
+
+            updateChart(filteredData);
+        });
+    });
+    </script>
+</body>
+</html>
