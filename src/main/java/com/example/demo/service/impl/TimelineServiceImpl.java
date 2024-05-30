@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,15 @@ public class TimelineServiceImpl implements TimelineService {
             System.out.println(e.toString());
         }
         return dataList;
+    }
+
+    @Override
+    public List<Map<String, Object>> getLabSummary(String id){
+        return timelineDao.findLabById(id);
+    }
+
+    @Override
+    public List<Map<String, Object>> getOpdSummary(String id){
+        return timelineDao.findOpdById(id);
     }
 }

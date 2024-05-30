@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,7 @@ public class DetailsServiceImpl implements DetailsService{
     @Autowired
     private DetailsDao detailsDao;
 
+    //寫入病患資料
     @Override
     public void uploadLabData(PatientDetails labDetails) {
         detailsDao.uploadLabData(labDetails);
@@ -26,15 +28,20 @@ public class DetailsServiceImpl implements DetailsService{
         detailsDao.uploadOpdData(opdDetails);
     }
 
-    //未完成
+
+    //詳細病歷
     @Override
-    public List getPatientDetailsByIdnumber(String id){
-            List dataList = new ArrayList<>();
-            try {
-                dataList = detailsDao.getPatientDetailsByIdnumber(id);
-            } catch (Exception e) {
-                System.out.println(e.toString());
-            }
-            return dataList;
+    public List<Map<String, Object>> getLabDetails(String id){
+        return detailsDao.findLabById(id);
+    }
+    
+    @Override
+    public List<Map<String, Object>> getOpdDetails(String id){
+        return detailsDao.findOpdById(id);
+    }
+
+    @Override
+    public List<Map<String, Object>> getErDetails(String id){
+        return detailsDao.findErById(id);
     }
 }

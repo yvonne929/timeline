@@ -30,6 +30,101 @@
                         <th>出生年月日：</th>
                         <th> <span th:text="${patient.birthday}"></span></th>
                     </tr>
+
+                    <tr th:each="item : ${entity}" >
+                        <table th:switch="${item['department']}">
+                            <!-- 當科別是檢驗時，顯示對應的內容 -->
+                                <table th:case="'檢驗'">
+                                    <tr><th>campus:</th>
+                                    <td><span th:text="${item['campus']}"></span></td></tr>
+                                    <tr><th>time:</th>
+                                    <td><span th:text="${item['time']}"></span></td></tr>
+                                    <tr><th>specimen:</th>
+                                    <td><span th:text="${item['specimen']}"></span></td></tr>
+                                    <tr><th>order:</th>
+                                    <td><span th:text="${item['orders']}"></span></td></tr>
+                                    <tr><th>warning:</th>
+                                    <td><span th:text="${item['warning']}"></span></td></tr>
+                                    <tr><th>testvalue</th>
+                                    <td><span th:text="${item['testvalue']}"></span></td></tr>
+                                    <tr><th>unit:</th>
+                                    <td><span th:text="${item['unit']}"></span></td></tr>
+                                    <tr><th>referencevalue:</th>
+                                    <td><span th:text="${item['referencevalue']}"></span></td></tr>
+                                </table>
+                                
+                                <!-- 當科別是門診時，顯示對應的內容 -->
+                                <table th:case="'門診'">
+                                    <tr><th>campus:</th>
+                                        <td><span th:text="${item['campus']}"></span></td></tr>
+                                        <tr><th>department_name:</th>
+                                        <td><span th:text="${item['department_name']}"></span></td></tr>
+                                        <tr><th>time:</th>
+                                        <td><span th:text="${item['time']}"></span></td></tr>
+                                        <tr><th>icd10_1:</th>
+                                        <td><span th:text="${item['icd10_1']}"></span></td></tr>
+                                        <tr><th>icd10_n1:</th>
+                                        <td><span th:text="${item['icd10_n1']}"></span></td></tr>
+                                        <tr><th>icd10_2:</th>
+                                        <td><span th:text="${item['icd10_2']}"></span></td></tr>
+                                        <tr><th>icd10_n2:</th>
+                                        <td><span th:text="${item['icd10_n2']}"></span></td></tr>
+                                        <tr><th>icd10_3:</th>
+                                        <td><span th:text="${item['icd10_3']}"></span></td></tr>
+                                        <tr><th>icd10_n3:</th>
+                                        <td><span th:text="${item['icd10_n3']}"></span></td></tr>
+                                        <tr><th>icd10_4:</th>
+                                        <td><span th:text="${item['icd10_4']}"></span></td></tr>
+                                        <tr><th>icd10_n4:</th>
+                                        <td><span th:text="${item['icd10_n4']}"></span></td></tr>
+                                        <tr><th>icd10_5:</th>
+                                        <td><span th:text="${item['icd10_5']}"></span></td></tr>
+                                        <tr><th>icd10_n5:</th>
+                                        <td><span th:text="${item['icd10_n5']}"></span></td></tr>
+                                        <tr><th>icd10_6:</th>
+                                        <td><span th:text="${item['icd10_6']}"></span></td></tr>
+                                        <tr><th>icd10_n6:</th>
+                                        <td><span th:text="${item['icd10_n6']}"></span></td></tr>
+                                </table>
+
+                                <!-- 當科別是急診時，顯示對應的內容 -->
+                                <table th:case="'急診'">
+                                    <tr><th>campus:</th>
+                                    <td><span th:text="${item['campus']}"></span></td></tr>
+                                    <tr><th>department_name:</th>
+                                    <td><span th:text="${item['department_name']}"></span></td></tr>
+                                    <tr><th>time:</th>
+                                    <td><span th:text="${item['time']}"></span></td></tr>
+                                    <tr><th>icd10_1:</th>
+                                    <td><span th:text="${item['icd10_1']}"></span></td></tr>
+                                    <tr><th>icd10_n1:</th>
+                                    <td><span th:text="${item['icd10_n1']}"></span></td></tr>
+                                    <tr><th>icd10_2:</th>
+                                    <td><span th:text="${item['icd10_2']}"></span></td></tr>
+                                    <tr><th>icd10_n2:</th>
+                                    <td><span th:text="${item['icd10_n2']}"></span></td></tr>
+                                    <tr><th>icd10_3:</th>
+                                    <td><span th:text="${item['icd10_3']}"></span></td></tr>
+                                    <tr><th>icd10_n3:</th>
+                                    <td><span th:text="${item['icd10_n3']}"></span></td></tr>
+                                    <tr><th>icd10_4:</th>
+                                    <td><span th:text="${item['icd10_4']}"></span></td></tr>
+                                    <tr><th>icd10_n4:</th>
+                                    <td><span th:text="${item['icd10_n4']}"></span></td></tr>
+                                    <tr><th>icd10_5:</th>
+                                    <td><span th:text="${item['icd10_5']}"></span></td></tr>
+                                    <tr><th>icd10_n5:</th>
+                                    <td><span th:text="${item['icd10_n5']}"></span></td></tr>
+                                    <tr><th>icd10_6:</th>
+                                    <td><span th:text="${item['icd10_6']}"></span></td></tr>
+                                    <tr><th>icd10_n6:</th>
+                                    <td><span th:text="${item['icd10_n6']}"></span></td></tr>
+                                </table>
+                                <!-- 其他部門 -->
+                                <table th:case="*" colspan="2">Department not supported</table>
+                            </table>
+                    </tr>
+                    </tr>
                 </table>
                 <a th:href="@{/timeline}" href="javascript: void(0)" class="btn">
                     <span>返回</span>

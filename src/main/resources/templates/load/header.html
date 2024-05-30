@@ -3,13 +3,14 @@
 <body th:fragment="header">
     <header>
         <section class="header">
-            <div class="logo">時間軸序醫療資訊紀錄平台</div>
+            <div class="logo">病人旅程醫療資訊紀錄平台</div>
             <nav>
                 <ul>
-                    <li><a th:href="@{/search}">查詢</a></li>
-                    <li><a th:href="@{/modifyPassword}">修改密碼</a></li>
-                    <li><a th:href="@{/icon}">圖示</a></li>
-                    <li><a th:href="@{/logout}">登出</a></li>
+                    <li><a th:href="@{/search}"><img th:src="@{/images/glass.png}" alt="Search Icon" style="height: 30px; vertical-align: middle;"> 查詢</a></li>
+                    <li><a th:href="@{/modifyPassword}"><img th:src="@{/images/key.png}" alt="Modify Password Icon" style="height: 30px; vertical-align: middle;"> 修改密碼</a></li>
+                    <li><a th:href="@{/icon}"><img th:src="@{/images/line.png}" alt="Icon Icon" style="height: 35px; vertical-align: middle;"> 圖示</a></li>
+                    <li><a th:href="@{/logout}"><img th:src="@{/images/logout.png}" alt="Logout Icon" style="height:  35px; vertical-align: middle;"> 登出</a></li>
+                    
                 </ul>
             </nav>
         </section>

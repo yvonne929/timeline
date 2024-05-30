@@ -10,18 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.1/darkly/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/timelinev.css}">
     <script th:replace="~{load/js :: js}"></script>
-    <!-- <script th:src="@{/js/timeline.js}"></script> -->
     <script th:src="@{/js/lib/jquery-3.4.1.js}"></script>
-    <!-- <script th:src="@{/js/jquery.timelinev.js}"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon"></script>
-    <style>
-        #testValueChart {
-            width: 100%;
-            height: 400px; 
-        }
-    </style>
+   
 </head>
 <body>
     <section th:replace="~{load/iconHeader :: iconHeader}"></section>
@@ -47,18 +40,22 @@
                 </section>
 
                 <div class="row">
-                    <label>選擇檢驗值：</label>
                     <div class="col">
-                        <input type="radio" id="typeUrine" name="specimen" value="尿" checked>
-                        <label for="typeUrine">尿</label>
+                        <label for="specimenType">選擇檢查項目：</label>
+                        <select id="specimenType" name="specimenType">
+                            <option value="尿">尿液檢查</option>
+                            <option value="血液">血液檢查</option>
+                            <option value="血脂肪">血脂肪檢查</option>
+                            <option value="糖尿病">糖尿病檢查</option>
+                            <option value="電解質">電解質檢查</option>
+                        </select>
                     </div>
                     <div class="col">
-                        <input type="radio" id="typeBlood" name="specimen" value="血液">
-                        <label for="typeBlood">血液</label>
+                        <label for="testType">選擇檢驗值：</label>
+                        <select id="testType" name="testType"></select>
                     </div>
-                
                 </div>
-
+                
                 <div class="row">
                     <div class="col">
                         <label for="startYear">起始年份：</label>
@@ -71,12 +68,13 @@
                     <div class="col">
                         <button type="button" id="filterTimeline">篩選</button>
                     </div>
-                </div> 
+                </div>
+                
 
                 <div class="row">
                     <canvas id="testValueChart"></canvas>
                 </div>
-                
+                <div id="noDataMessage"></div>
             </main>
         </div>
     </section>
@@ -114,20 +112,6 @@
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
                     }]
-                    // datasets: [{
-                    //     label: '尿',
-                    //     data: data.filter(function(v) { return v.specimen === '尿'; }).map(function(v) { return v.testvalue; }),
-                    //     backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    //     borderColor: 'rgba(54, 162, 235, 1)',
-                    //     borderWidth: 1
-                    // }, {
-                    //     label: '血液',
-                    //     data: data.filter(function(v) { return v.specimen === '血液'; }).map(function(v) { return v.testvalue; }),
-                    //     backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    //     borderColor: 'rgba(255, 99, 132, 1)',
-                    //     borderWidth: 1
-                    // }]
-
                 },
                 options: {
                     scales: {
@@ -155,6 +139,37 @@
             testValueChart.update();
         }
 
+        function populateTestTypeSelect(testTypeData) {
+        var testTypeSelect = $('#testType');
+        testTypeSelect.empty();
+        testTypeData.forEach(function(testType) {
+        if (testType !== null) {
+            testTypeSelect.append($('<option>', { value: testType, text: testType }));
+        }
+        });
+    }
+    function updateTestTypeOptions(specimenType) {
+        var testTypeData;
+        if (specimenType === '尿') {
+            testTypeData = ["RBC", "WBC"];
+        } else if (specimenType === '血液') {
+            testTypeData = ["WBC", "RBC", "HB", "MCV", "MVH", "MCHC", "PLT"];
+        }else if(specimenType === '血脂肪'){
+            testTypeData = ["Cholesterol", "TG", "HDL-C", "LDL-C", "Rist Factor", "V.L.D.L"];
+        }else if(specimenType === '電解質'){
+            testTypeData = ["Na", "K", "Cl", "Ca", "Phosphorus", "Mg", "Lithium"];
+        }else if(specimenType === '糖尿病'){
+            testTypeData = ["AC GLUCOSE", "PC GLUCOSE", "Fructosamine" ];
+        }
+        populateTestTypeSelect(testTypeData);
+    }
+
+    $('#specimenType').on('change', function () {
+        var selectedSpecimen = $(this).val();
+        updateTestTypeOptions(selectedSpecimen);
+    });
+
+
         $.ajax({
             type: "GET",
             url: "/getListData",
@@ -163,6 +178,12 @@
                 console.log("Data received:", data);
                 allData = data;
                 initializeChart(allData);
+                
+
+                // // 提取orders字段并去重
+                // // var testTypeData = [...new Set(allData.map(item => item.orders))];
+                // // var testTypeData = ["RBC", "WBC", "protein", "bilirubin", "pH","blood","nitrite","glucose","ketone"];
+                // populateTestTypeSelect(testTypeData);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.error("Error fetching data:", textStatus, errorThrown);
@@ -170,7 +191,8 @@
         });
 
         $('#filterTimeline').on('click', function () {
-            var selectedSpecimen = $('input[name="specimen"]:checked').val();
+            var selectedSpecimen = $('#specimenType').val();
+            var selectedTestType = $('#testType').val();
             var startYear = $('#startYear').val();
             var endYear = $('#endYear').val();
 
@@ -178,10 +200,21 @@
                 var itemYear = new Date(item.time).getFullYear();
                 return (startYear === 'all' || itemYear >= parseInt(startYear)) &&
                        (endYear === 'all' || itemYear <= parseInt(endYear)) &&
-                       (selectedSpecimen === undefined || item.specimen === selectedSpecimen);
+                       (selectedSpecimen === undefined || item.specimen === selectedSpecimen) &&
+                       (selectedTestType === undefined || item.orders === selectedTestType);
             });
 
-            updateChart(filteredData);
+          
+        if (filteredData.length === 0) {
+        // 沒有符合的數據，顯示提示消息
+        $('#noDataMessage').text('沒有符合的資料。');
+        $('#testValueChart').hide();
+         } else {
+        // 有符合的數據，更新圖表
+        $('#testValueChart').show();
+        updateChart(filteredData);
+        $('#noDataMessage').text('');
+         }
         });
     });
     </script>

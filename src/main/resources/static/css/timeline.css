@@ -127,3 +127,17 @@ main form button:hover {
 #scrollTopBtn:hover {
     background-color: #777; /* Add a darker background on hover */
 }
+
+.date-box {
+    border: 2px solid #000;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: none;
+    width: 400px;
+    height: 300px;
+}
+
+.active .date-box {
+    display: block; /* 点击后显示 */
+}

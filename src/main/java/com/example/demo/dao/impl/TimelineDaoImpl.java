@@ -41,5 +41,17 @@ private JdbcTemplate jdbcTemplate;
                             
                 return dataList;
     }
+
+    @Override
+    public List<Map<String, Object>> findLabById(String id){
+        String sql = "SELECT * FROM lab WHERE id = ?";
+        return jdbcTemplate.queryForList(sql, id);
+    }
+
+    @Override
+    public List<Map<String, Object>> findOpdById(String id) {
+        String sql = "SELECT * FROM opd WHERE id = ?";
+        return jdbcTemplate.queryForList(sql, id);
+    }
 }
 

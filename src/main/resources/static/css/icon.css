@@ -61,4 +61,23 @@ main form {
     padding: 0px 8px;
 }
 
+#noDataMessage {
+    color: #d36262;
+    font-weight: bold;
+    margin-top: 40px;
+    font-size: 25px;
+}
+  #testValueChart {
+            width: 100%;
+            height: 400px; 
+        }
 
+       
+.col button#filterTimeline {
+    height: 50px; 
+     }
+ #filterTimeline:active {
+    background-color: rgb(114, 164, 114); 
+    color: white; 
+    border-color: rgb(114, 164, 114); 
+    }

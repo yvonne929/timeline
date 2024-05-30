@@ -21,6 +21,8 @@ public class DetailsDaoImpl implements DetailsDao{
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    //寫入病患資料
     @Override
     public void uploadLabData(PatientDetails labDetails){
         String sql = "INSERT INTO lab(CAMPUS,DEPARTMENT,IDNUMBER,TIME,SPECIMEN,ORDERS,WARNING,TESTVALUE,UNIT,REFERENCEVALUE) VALUES (:campus,:department,:idnumber,:time,:specimen,:orders,:warning,:testvalue,:unit,:referencevalue)";
@@ -62,27 +64,26 @@ public class DetailsDaoImpl implements DetailsDao{
         map.put("icd10_n6",opdDetails.getIcd10_n6());
         namedParameterJdbcTemplate.update(sql, map);
     }
-    //未完成
+    
+
+    //詳細病歷
     @Override
-    public List getPatientDetailsByIdnumber(String id) {
-        List<Map<String, Object>> dataList = new ArrayList<>();
-        try {
-            String sql1 = "SELECT * FROM patientdetails WHERE department = ? AND id = ? ";
-            List<Map<String, Object>> result1 = jdbcTemplate.queryForList(sql1, id);
-            dataList.addAll(result1);
+    public List<Map<String, Object>> findLabById(String id) {
+        String sql = "SELECT * FROM lab WHERE id = ?";
+        return jdbcTemplate.queryForList(sql, id);
+    }
 
-            String sql2 = "SELECT * FROM opd WHERE department = ? AND id = ? ";
-            List<Map<String, Object>> result2 = jdbcTemplate.queryForList(sql2, id);
-            dataList.addAll(result2);
+    @Override
+    public List<Map<String, Object>> findOpdById(String id) {
+        String sql = "SELECT * FROM opd WHERE id = ?";
+        return jdbcTemplate.queryForList(sql, id);
+    }
 
-            for (Map<String, Object> row : dataList) {
-            System.out.println(row);
-            }
-
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-        return dataList;
+    @Override
+    public List<Map<String, Object>> findErById(String id) {
+        String sql = "SELECT * FROM er WHERE id = ?";
+        return jdbcTemplate.queryForList(sql, id);
     }
 }
+
 

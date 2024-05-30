@@ -39,20 +39,60 @@ jQuery.fn.timelinev = function(options){
         }
 
         //Bind click on date
+        // $(settings.containerDivs).find(settings.dateDiv).click(function(event){
+        //     event.preventDefault();
+        //     var dateSelected = $(this).find(settings.dateHtml);
+        //     var posDate = dates.indexOf(dateSelected.html());
+        
+        //     if (!$(this).parent().hasClass('active')) {
+        //         divsCont.removeClass('active');
+        //         $(this).parent().addClass('active');
+        //         dateActive = posDate;
+        //     } else {
+        //         $(this).parent().removeClass('active');
+        //         dateActive = -1; // Reset dateActive to indicate no active date
+        //     }
+        // });
+
         $(settings.containerDivs).find(settings.dateDiv).click(function(event){
             event.preventDefault();
             var dateSelected = $(this).find(settings.dateHtml);
             var posDate = dates.indexOf(dateSelected.html());
-        
+
+            var idSelected = $(this).attr('id'); // 获取被点击元素的 id 属性
+            var departmentSelected = $(this).attr('department');
+            console.log("Selected ID: " + idSelected);
+            console.log("Selected department: " + departmentSelected);
+
             if (!$(this).parent().hasClass('active')) {
+                // 移除所有容器的激活狀態
                 divsCont.removeClass('active');
+                // 添加目前容器的激活狀態
                 $(this).parent().addClass('active');
                 dateActive = posDate;
             } else {
+                // 取消目前容器的激活狀態
                 $(this).parent().removeClass('active');
-                dateActive = -1; // Reset dateActive to indicate no active date
+                dateActive = -1; // 重置dateActive表示沒有激活的日期
             }
+
+            $.ajax({
+                url: '/timeline/getDateDetails', // 替換為伺服器端對應的URL
+                type: 'GET',
+                data: {
+                    id: idSelected,
+                    department: departmentSelected
+                },
+                success: function(response) {
+                    // 在這裡處理伺服器返回的資料，例如顯示在對應的日期框中
+                    $('#date-box-' + idSelected).html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error: " + status + error);
+                }
+            });
         });
+
         
         
         

@@ -15,31 +15,26 @@
     <script th:src="@{/js/lib/jquery-3.4.1.js}"></script>
     <script th:src="@{/js/jquery.timelinev.js}"></script>
 </head>
-    
 <body>
     <section th:replace="~{load/header :: header}"></section>
-
     <section class="main-content">
         <div class="content">
             <main>
                 <h1>基本資料及時間軸</h1>
-        		<form id="timelineForm" method="POST" th:action="@{/timeline}" enctype="multipart/form-data" autocomplete="off">
+                <form id="timelineForm" method="POST" th:action="@{/timeline}" enctype="multipart/form-data" autocomplete="off">
                     <section class="form-data">
                         <table>
                             <tr>
                                 <th>身分證字號：</th>
-                                <th> <span th:text="${patient.idNumber}"></span></th>
-
+                                <th><span th:text="${patient.idNumber}"></span></th>
                                 <th>姓名：</th>
-                                <th> <span th:text="${patient.name}"></span></th>
+                                <th><span th:text="${patient.name}"></span></th>
                             </tr>
-
                             <tr>
                                 <th>性別：</th>
-                                <th> <span th:text="${patient.gender}"></span></th>
-                       
+                                <th><span th:text="${patient.gender}"></span></th>
                                 <th>出生年月日：</th>
-                                <th> <span th:text="${patient.birthday}"></span></th>
+                                <th><span th:text="${patient.birthday}"></span></th>
                             </tr>
                         </table>
                     </section>
@@ -51,27 +46,22 @@
                         <input type="checkbox" id="selectAll" name="selectAll" checked>
                         <label for="selectAll">全選</label>
                     </div>
-                
                     <div class="col-auto">
                         <input type="checkbox" id="O" name="type" value="門診" checked>
                         <label for="O">門診</label>
                     </div>
-                
                     <div class="col-auto">
                         <input type="checkbox" id="E" name="type" value="急診" checked>
                         <label for="E">急診</label>
                     </div>
-                
                     <div class="col-auto">
                         <input type="checkbox" id="I" name="type" value="住院" checked>
                         <label for="I">住院</label>
                     </div>
-                
                     <div class="col-auto">
                         <input type="checkbox" id="L" name="type" value="檢驗" checked>
                         <label for="L">檢驗</label>
                     </div>
-                
                     <div class="col-auto">
                         <input type="checkbox" id="X" name="type" value="檢查" checked>
                         <label for="X">檢查</label>
@@ -88,178 +78,156 @@
                         <select id="endYear" name="endYear"></select>
                     </div>
                     <div class="col">
+                        <label for="campus">選擇醫院院所：</label>
+                        <select id="campus" name="campus"></select>
+                    </div>
+                    <div class="col">
                         <button type="button" id="filterTimeline">篩選</button>
                     </div>
                 </div> 
             </main>  
 
-        <div class="xxx">
-        <div id="timeline" class="row ">
-            <div class="timelineCont col-12" style="margin-top: -231px;">
-                <div class="row">
-                    <div class="date col-5">
-                        <h2></h2>
+            <div class="xxx">
+                <div id="timeline" class="row">
+                    <div class="timelineCont col-12" style="margin-top: 0px;" th:each="data : ${dataList}" th:data-campus="${data.campus}">
+                        <div class="row">
+                            <div th:id="${data.id}" th:department="${data.department}" class="date col-3"
+                                th:classappend="${data.department == '門診' ? 'outpatient' : 
+                                                 (data.department == '急診' ? 'emergency' : 
+                                                 (data.department == '檢查' ? 'check' : 
+                                                 (data.department == '檢驗' ? 'lab' : 
+                                                 (data.department == '住院' ? 'inpatient' : ''))))}">
+                                <h2>
+                                    <img th:if="${data.department == '住院'}" th:src="@{/images/IPD.png}" />
+                                    <img th:if="${data.department == '門診'}" th:src="@{/images/OPD.png}" />
+                                    <img th:if="${data.department == '檢查'}" th:src="@{/images/RX.png}" />
+                                    <img th:if="${data.department == '檢驗'}" th:src="@{/images/LAB.png}" />
+                                    <img th:if="${data.department == '急診'}" th:src="@{/images/ER.png}" />
+                                    <span th:id="${data.id}" th:department="${data.department}" th:text="${data.department} + ' ' + ${#dates.format(data.time, 'yyyy-MM-dd')}"></span>
+                                </h2>
+                            </div>
+                            <div class="text col-4">
+                                <p th:text="${data.department}"></p>
+                                <a th:href="@{/details/{department}/{id}(department=${data.department},id=${data.id})}" class="btn btn-primary">查看詳細病歷</a>
+                                <span th:if="${data.warning != null}" class="warning">
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#warningModal1" th:attr="data-tooltip=${data.warning}, data-specimen=${data.specimen}, data-test-value=${data.testvalue}">警告</button>
+                                    <h1 th:text="${data.warning}" style="display: none;"></h1>
+                                </span>
+                            </div>
+                            <div class="date-container">
+                                <div class="text col-5">
+                                    <div th:id="'date-box-' + ${data.id}" class="date-box">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-    
-                    <div class="text col-7">
-                        <p></p>
-                    </div>
-                </div>
+                </div>   
+                <button onclick="scrollToTop()" id="scrollTopBtn" title="返回頂部">↑</button>      
             </div>
-            
-            <div class="timelineCont col-12" style="margin-top: 0px;" th:each="dataList: ${dataList}">
-                <div class="row">
-                    <div class="date col-5"
-                    th:classappend="${dataList.department == '門診' ? 'outpatient' : 
-                                     (dataList.department == '急診' ? 'emergency' : 
-                                     (dataList.department == '檢查' ? 'check' : 
-                                     (dataList.department == '檢驗' ? 'lab' : 
-                                     (dataList.department == '住院' ? 'inpatient' : ''))))}">
-                        
-                        <h2>
-                            <img th:if="${dataList.department == '住院'}"  th:src="@{/images/IPD.png}"  />
-                            <img th:if="${dataList.department == '門診'}"  th:src="@{/images/OPD.png}"  />
-                            <img th:if="${dataList.department == '檢查'}" th:src="@{/images/RX.png}" />
-                            <img th:if="${dataList.department == '檢驗'}" th:src="@{/images/LAB.png}" />
-                            <img th:if="${dataList.department == '急診'}" th:src="@{/images/ER.png}" />
-            
-                            <span th:text="${dataList.department} + ' ' + ${#dates.format(dataList.time, 'yyyy-MM-dd')}"></span>
-                        </h2>           
-                    </div>
-    
-                    <div class="text col-7">
-                        <p th:text="${dataList.department}"></p>
-                        <a th:href="@{/details}" class="btn btn-primary">查看詳細病歷</a>
-                        <span th:if="${dataList.warning != null}" class="warning">
-                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#warningModal1" th:attr="data-tooltip=${dataList.warning}, data-specimen=${dataList.specimen}, data-test-value=${dataList.testvalue}">警告</button>
-
-                            <h1 th:text="${dataList.warning}" style="display: none;"></h1>
-                        </span>
-                    </div>
-                </div>
-            </div> 
-            <div class="timelineCont col-12">
-                <div class="row">
-                    <div class="date col-5">
-                        <h2></h2>
-                    </div>
-    
-                    <div class="text col-7">
-                        <p></p>
-                    </div>
-                </div>
-            </div>   
-            <button onclick="scrollToTop()" id="scrollTopBtn" title="返回頂部">↑</button>      
         </div>   
     </section>
-    
-    
     <script>
         $(function(){
             $('#timeline').timelinev({
-                containerDivs:    '.timelineCont',
-                dateDiv:         '.date',
-                textDiv:         '.text',
-                dateHtml:        'h2',
-                textHtml:        'p',
+                containerDivs: '.timelineCont',
+                dateDiv: '.date',
+                textDiv: '.text',
+                dateHtml: 'h2',
+                textHtml: 'p',
                 dateActiveClass: '.active',
             });
         });
 
-        // 在頁面載入完成後，生成年份選項
-                $(document).ready(function () {
-                var currentYear = new Date().getFullYear();
-                var startYearSelect = $('#startYear');
-                var endYearSelect = $('#endYear');
+        $(document).ready(function () {
+            var currentYear = new Date().getFullYear();
+            var startYearSelect = $('#startYear');
+            var endYearSelect = $('#endYear');
 
-        startYearSelect.append($('<option>', {
-            value: 'all',
-            text: '請選擇年份'
-        }));
-        endYearSelect.append($('<option>', {
-            value: 'all',
-            text: '請選擇年份'
-        }));
-
-        
-        // 動態生成年份選項，這裡生成 1911 到當前年份的選項
-        for (var year = currentYear; year >= 1911; year--) {
             startYearSelect.append($('<option>', {
-                value: year,
-                text: year + "年"
+                value: 'all',
+                text: '請選擇年份'
             }));
             endYearSelect.append($('<option>', {
-                value: year,
-                text: year + "年"
+                value: 'all',
+                text: '請選擇年份'
             }));
-        }
+
+            for (var year = currentYear; year >= 1911; year--) {
+                startYearSelect.append($('<option>', {
+                    value: year,
+                    text: year + "年"
+                }));
+                endYearSelect.append($('<option>', {
+                    value: year,
+                    text: year + "年"
+                }));
+            }
+
+            var campusSelect = $('#campus');
+            campusSelect.append($('<option>', {
+                value: 'all',
+                text: '請選擇醫院院所'
+            }));
+
+            var campuses = [];
+            $('.timelineCont').each(function () {
+                var campus = $(this).attr('data-campus');
+                if (campus && !campuses.includes(campus)) {
+                    campuses.push(campus);
+                    campusSelect.append($('<option>', {
+                        value: campus,
+                        text: campus
+                    }));
+                }
+            });
         });
 
-        // 在 JavaScript 中添加篩選邏輯
         $('#filterTimeline').on('click', function () {
             var startYear = $('#startYear').val();
             var endYear = $('#endYear').val();
             var selectedTypes = [];
+            var selectedCampus = $('#campus').val();
 
-            // 找到被選中的類型
             $('input[name="type"]:checked').each(function () {
                 selectedTypes.push($(this).val());
             });
 
-            // 隱藏所有時間軸項
             $('.timelineCont').hide();
 
-            // 只顯示所選年份範圍内和所選類型的項
             $('.timelineCont').filter(function () {
-                var itemDate = $(this).find('.date h2').text().trim();
+                var itemDate = $(this).find('.date h2 span').text().trim();
                 var itemYear = new Date(itemDate).getFullYear();
                 var itemType = $(this).find('.text p').text().trim();
-                return (itemYear >= parseInt(startYear) && itemYear <= parseInt(endYear) && selectedTypes.includes(itemType));
+                var itemCampus = $(this).attr('data-campus');
+                return (
+                    (startYear === 'all' || itemYear >= parseInt(startYear)) &&
+                    (endYear === 'all' || itemYear <= parseInt(endYear)) &&
+                    (selectedTypes.length === 0 || selectedTypes.includes(itemType)) &&
+                    (selectedCampus === 'all' || selectedCampus === itemCampus)
+                );
             }).show();
         });
 
-
-        // 監聽全選的變化
         $('#selectAll').change(function () {
-            if ($(this).prop('checked')) {
-                // 如果全選被勾選，也勾選其他的選項
-                $('input[name="type"]').prop('checked', true);
-            } else {
-                // 如果全選被取消，也取消勾選其他選項
-                $('input[name="type"]').prop('checked', false);
-            }
-
-            // 觸發其他選項的chang事件，用來更新時間軸的顯示
-            $('input[name="type"]').trigger('change');
+            $('input[name="type"]').prop('checked', $(this).prop('checked')).trigger('change');
         });
 
-        // 監聽其他選項變化
         $('input[name="type"]').change(function () {
-            var selectedTypes = [];
-
-            // 找到被選中的選項
-            $('input[name="type"]:checked').each(function () {
-                selectedTypes.push($(this).val());
-            });
-
-            // 更新全選的狀態
+            var selectedTypes = $('input[name="type"]:checked').map(function () { return $(this).val(); }).get();
             $('#selectAll').prop('checked', selectedTypes.length === $('input[name="type"]').length);
 
-            // 如果所有選項都被選中，會顯示所有類型的時間軸
             if (selectedTypes.length === $('input[name="type"]').length) {
                 $('.timelineCont').show();
             } else {
-                // 不然會隱藏全部時間軸
                 $('.timelineCont').hide();
-
-                // 顯示被選中的選項時間軸
                 selectedTypes.forEach(function (type) {
                     $('.timelineCont:contains("' + type + '")').show();
                 });
             }
         });
 
-        //向上滾動
         window.onscroll = function() {scrollFunction()};
 
         function scrollFunction() {
@@ -276,17 +244,14 @@
                 var scrollToTopBtn = document.getElementById("scrollTopBtn");
                 var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
                 if (currentPosition > 0) {
-                    window.scrollBy(0, -50); // 每次滾動上去的距離，數字越大滾越快
+                    window.scrollBy(0, -50);
                 } else {
                     clearInterval(scrollToTopInterval);
                 }
-            }, 10); // 滾動的時間間隔，數字越小滾得越快
+            }, 10);
         }
-
-
     </script>
 
     <section th:replace="~{load/footer :: footer}"></section>
 </body>
 </html>
-
