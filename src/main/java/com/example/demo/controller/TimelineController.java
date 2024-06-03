@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.entity.Patient;
-import com.example.demo.service.DetailsService;
 import com.example.demo.service.TimelineService;
 
 import jakarta.servlet.http.HttpSession;
@@ -45,30 +44,6 @@ public class TimelineController {
         return "timeline";
 
     }
-
-    // @GetMapping("/timeline/getDateDetails")
-    // @ResponseBody
-    // public String getDateDetails(@RequestParam String id, @RequestParam String department ,Model model ) {
-    //     // 根據ID和Department查找對應的資料
-    //     List<Map<String, Object>> summary;
-    //     switch (department) {
-    //         case "檢驗":
-    //             summary = timelineService.getLabSummary(id);
-    //             break;
-    //         case "門診":
-    //             summary = timelineService.getOpdSummary(id);
-    //             break;
-    //         // case "急診":
-    //         //     summary = timelineService.getErSummary(id);
-    //         //     break;
-            
-    //         default:
-    //             summary = null;
-    //             break;
-    //     }
-    //     model.addAttribute("summary", summary);
-    //     return "timeline";
-    // }
 
 
     @GetMapping("/timeline/getDateDetails")
@@ -103,7 +78,7 @@ public class TimelineController {
         StringBuilder details = new StringBuilder();
          details.append("<div style=\"font-size: 28px; color: black;\">");
         if (results.isEmpty()) {
-            // 如果结果为空，构建一个空的 HTML 框
+            // 如果結果為空，建構一個空的HTML框
             details.append("<p>沒有相關資料。</p>");
         } 
         else {
